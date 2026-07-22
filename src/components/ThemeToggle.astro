@@ -1,0 +1,43 @@
+---
+import { Moon, Sun } from '@lucide/svelte';
+---
+
+<button
+	class="grid size-10 cursor-pointer place-items-center rounded-sm text-neutral-600 transition-colors hover:bg-black/5 hover:text-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:text-neutral-400 dark:hover:bg-white/10 dark:hover:text-white"
+	type="button"
+	aria-label="Switch to dark mode"
+	title="Switch to dark mode"
+	data-theme-toggle
+>
+	<Moon class="dark:hidden" aria-hidden="true" size={22} strokeWidth={2} />
+	<Sun class="hidden dark:block" aria-hidden="true" size={22} strokeWidth={2} />
+</button>
+
+<script>
+	const button = document.querySelector<HTMLButtonElement>(
+		'[data-theme-toggle]',
+	);
+
+	function updateThemeToggleLabel() {
+		if (!button) return;
+
+		const nextTheme = document.documentElement.classList.contains('dark')
+			? 'light'
+			: 'dark';
+		const label = `Switch to ${nextTheme} mode`;
+		button.setAttribute('aria-label', label);
+		button.setAttribute('title', label);
+	}
+
+	button?.addEventListener('click', () => {
+		const useDarkTheme = !document.documentElement.classList.contains('dark');
+		document.documentElement.classList.toggle('dark', useDarkTheme);
+		document.documentElement.style.colorScheme = useDarkTheme
+			? 'dark'
+			: 'light';
+		localStorage.setItem('theme', useDarkTheme ? 'dark' : 'light');
+		updateThemeToggleLabel();
+	});
+
+	updateThemeToggleLabel();
+</script>

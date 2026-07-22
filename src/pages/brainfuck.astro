@@ -1,0 +1,52 @@
+---
+import BrainfuckCompiler from '../components/BrainfuckCompiler.svelte';
+import mandelbrot from '../data/mandelbrot.bf?raw';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="Optimizing Brainfuck Compiler"
+	description="An optimizing Brainfuck-to-WebAssembly compiler running in the browser."
+>
+	<article class="tool-container pt-8 pb-10 sm:pt-10 sm:pb-12">
+		<h1 class="page-heading mx-auto text-center text-3xl sm:text-4xl">
+			Optimizing Brainfuck Compiler
+		</h1>
+		<div
+			class="post-prose mt-4 space-y-2 text-base leading-7 text-neutral-600 dark:text-neutral-400"
+		>
+			<p>
+				This optimizing Brainfuck compiler runs entirely in the browser and
+				targets WebAssembly as its output format. The generated WebAssembly is
+				executed by the same browser runtime that hosts the compiler itself. I
+				wrote it for
+				<a class="text-link" href="https://users.cs.utah.edu/~regehr/"
+					>John Regehr’s</a
+				>
+				advanced compilers course (<a
+					class="text-link"
+					href="https://github.com/dominicmkennedy/bf-interpreter/"
+					>source code</a
+				>).
+			</p>
+			<p>The optimizer uses an IR to recognize Brainfuck idioms, including:</p>
+			<ul
+				class="list-disc space-y-0.5 pl-5 marker:text-[var(--heading-secondary-start)]"
+			>
+				<li>
+					clearing a cell with a decrement loop
+					<code>[-]</code>
+				</li>
+				<li>
+					using a loop to multiply and transfer values
+					<code>[- > + &lt;]</code>
+				</li>
+				<li>
+					using SIMD to scan for zero cells more quickly
+					<code>[>]</code>
+				</li>
+			</ul>
+		</div>
+		<BrainfuckCompiler initialProgram={mandelbrot} client:load />
+	</article>
+</BaseLayout>

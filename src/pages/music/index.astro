@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+import FeedLink from '../../components/FeedLink.astro';
+import MusicRecommendation from '../../components/MusicRecommendation.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const recommendations = (await getCollection('music')).sort(
+	(a, b) => b.data.reviewed.valueOf() - a.data.reviewed.valueOf(),
+);
+---
+
+<BaseLayout title="What I've Been Listening to" feedHref="/music/rss.xml">
+	<section class="content-container py-8 sm:py-10">
+		<div class="mb-6 flex items-center justify-between gap-4">
+			<h1 class="page-heading text-3xl">What I've Been Listening to</h1>
+			<FeedLink href="/music/rss.xml" label="Music" />
+		</div>
+		{
+			recommendations.length > 0 ? (
+				<div class="space-y-5">
+					{recommendations.map((recommendation) => (
+						<MusicRecommendation {recommendation} />
+					))}
+				</div>
+			) : (
+				<p class="text-neutral-600 dark:text-neutral-400">
+					No recommendations yet.
+				</p>
+			)
+		}
+	</section>
+</BaseLayout>

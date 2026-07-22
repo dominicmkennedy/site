@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PhotoCarousel from '../components/PhotoCarousel.svelte';
+
+const photos = [
+	{
+		src: '/dominic-in-dc.jpg',
+		alt: 'At a restaurant in Washington, DC',
+		width: 1492,
+		height: 1990,
+	},
+	{
+		src: '/dominic-biking-parleys-point-sunset.jpg',
+		alt: "Biking Parley's Point at sunset",
+		width: 1492,
+		height: 1990,
+	},
+	{
+		src: '/dominic-skiing-matterhorn.jpg',
+		alt: 'Skiing with the Matterhorn in the background',
+		width: 1492,
+		height: 1990,
+	},
+	{
+		src: '/dominic-biking-snowbird.jpg',
+		alt: 'Mountain biking at Snowbird',
+		width: 1492,
+		height: 1990,
+	},
+	{
+		src: '/dominic-skiing-brighton.jpg',
+		alt: 'Skiing at Brighton',
+		width: 1492,
+		height: 1990,
+	},
+	{
+		src: '/dominic-biking-jacobs-ladder.jpg',
+		alt: "Biking Jacob's Ladder above Utah Lake",
+		width: 1492,
+		height: 1990,
+	},
+	{
+		src: '/dominic-in-nyc.jpg',
+		alt: 'In New York City',
+		width: 426,
+		height: 532,
+	},
+];
+---
+
+<BaseLayout
+	title="Dominic Kennedy"
+	description="Dominic Kennedy is a Computer Science Ph.D. student at the University of Utah."
+>
+	<article class="content-container py-12 sm:py-16">
+		<header>
+			<h1 class="page-heading text-4xl sm:text-5xl">Howdy!</h1>
+			<div
+				class="mt-6 text-lg leading-8 text-neutral-700 after:block after:clear-both after:content-[''] dark:text-neutral-300"
+			>
+				<div class="mb-6 w-full sm:float-left sm:mr-7 sm:mb-3 sm:w-64">
+					<PhotoCarousel {photos} client:load />
+				</div>
+
+				<p>
+					I'm Dominic Kennedy, a Computer Science Ph.D. student at the
+					University of Utah advised by
+					<a class="text-link" href="https://users.cs.utah.edu/~blg/"
+						>Ben Greenman</a
+					>. My research interests include abstract interpretation, and formal
+					verification of compiler components. I also work closely with the
+					other students and professors in
+					<a class="text-link" href="https://pl.cs.utah.edu/">Utah's PL group</a
+					>.
+				</p>
+				<p class="mt-4">
+					Like any good <a
+						class="text-link"
+						href="https://en.wikipedia.org/wiki/Demonym">Utahn</a
+					>, I like to ski when there's snow and mountain bike when there's not.
+					I also enjoy playing trombone in a jazz ensemble, messing with
+					<a class="text-link" href="https://www.uiua.org/">esolangs</a>, and
+					watching soccer—I worked as a soccer referee throughout undergrad.
+				</p>
+			</div>
+		</header>
+
+		<hr class="section-rule" />
+
+		<section aria-labelledby="contact-heading">
+			<h2 id="contact-heading" class="section-heading">Contact</h2>
+			<div class="section-copy">
+				<p>
+					Send fan mail to dominicmkennedy[at]gmail.com. Don't be shy! You can
+					also find me on
+					<a class="text-link" href="https://github.com/dominicmkennedy"
+						>GitHub</a
+					>,
+					<a class="text-link" href="https://letterboxd.com/dominickennedy"
+						>Letterboxd</a
+					>,
+					<a class="text-link" href="https://goodreads.com/dominic_kennedy"
+						>Goodreads</a
+					>, and
+					<a class="text-link" href="https://www.strava.com/athletes/207383200"
+						>Strava</a
+					>. For those interested, here is my
+					<a class="text-link" href="/dominic-kennedy-cv.pdf">CV</a>.
+				</p>
+			</div>
+		</section>
+
+		<hr class="section-rule" />
+
+		<section aria-labelledby="projects-heading">
+			<h2 id="projects-heading" class="section-heading">Projects</h2>
+			<ul
+				class="mt-4 space-y-2 leading-7 text-neutral-700 dark:text-neutral-300"
+			>
+				<li>
+					<a class="text-link" href="/brainfuck"
+						>Optimizing Brainfuck compiler</a
+					>
+					— hosted on WASM and targeting WASM.
+				</li>
+				<li>
+					<a class="text-link" href="/cellular-automata"
+						>2D cellular automata renderer</a
+					>
+					— renders quickly by using WASM to draw on a WebGL canvas.
+				</li>
+			</ul>
+		</section>
+
+		<hr class="section-rule" />
+
+		<section aria-labelledby="publications-heading">
+			<h2 id="publications-heading" class="section-heading">Publications</h2>
+			<ol class="mt-6 space-y-8 text-neutral-700 dark:text-neutral-300">
+				<li>
+					<a
+						class="text-link block text-lg font-medium text-neutral-950 dark:text-white"
+						href="https://users.cs.utah.edu/~regehr/papers/popl26.pdf"
+					>
+						Nice to Meet You: Synthesizing Practical MLIR Abstract Transformers
+					</a>
+					<p class="mt-2 leading-7">
+						Xuanyu Peng,
+						<strong class="font-semibold text-neutral-950 dark:text-white"
+							>Dominic Kennedy</strong
+						>, Yuyou Fan, Ben Greenman, John Regehr, Loris D'Antoni.
+					</p>
+					<p
+						class="mt-1 text-sm leading-6 text-neutral-500 dark:text-neutral-400"
+					>
+						<em
+							>53rd ACM SIGPLAN Symposium on Principles of Programming Languages</em
+						>
+						(POPL), January 2026.
+					</p>
+				</li>
+				<li>
+					<a
+						class="text-link block text-lg font-medium text-neutral-950 dark:text-white"
+						href="https://doi.org/10.1109/eScience55777.2022.00059"
+					>
+						Augmenting singularity to generate fine-grained workflows, record
+						trails, and data provenance.
+					</a>
+					<p class="mt-2 leading-7">
+						<strong class="font-semibold text-neutral-950 dark:text-white"
+							>Dominic Kennedy</strong
+						>, Paula Olaya, Jay Lofstead, Rodrigo Vargas, and Michela Taufer.
+					</p>
+					<p
+						class="mt-1 text-sm leading-6 text-neutral-500 dark:text-neutral-400"
+					>
+						<em>IEEE 18th International Conference on e-Science</em> (e-Science),
+						2022.
+					</p>
+				</li>
+				<li>
+					<a
+						class="text-link block text-lg font-medium text-neutral-950 dark:text-white"
+						href="https://doi.org/10.1109/TPDS.2022.3220539"
+					>
+						Building trust in earth science findings through data traceability
+						and results explainability.
+					</a>
+					<p class="mt-2 leading-7">
+						Paula Olaya,
+						<strong class="font-semibold text-neutral-950 dark:text-white"
+							>Dominic Kennedy</strong
+						>, Ricardo Llamas, Leobardo Valera, Rodrigo Vargas, Jay Lofstead,
+						and Michela Taufer.
+					</p>
+					<p
+						class="mt-1 text-sm leading-6 text-neutral-500 dark:text-neutral-400"
+					>
+						<em>IEEE Transactions on Parallel and Distributed Systems</em> (TPDS),
+						2023.
+					</p>
+				</li>
+				<li>
+					<a
+						class="text-link block text-lg font-medium text-neutral-950 dark:text-white"
+						href="https://doi.org/10.1109/ICMLA58977.2023.00232"
+					>
+						Hyperparameter optimization and feature inclusion in graph neural
+						networks for spiking implementation.
+					</a>
+					<p class="mt-2 leading-7">
+						Guojing Cong, Shruti Kulkarni, Seung-Hwan Lim, Prasanna Date, Shay
+						Snyder, Maryam Parsa,
+						<strong class="font-semibold text-neutral-950 dark:text-white"
+							>Dominic Kennedy</strong
+						>, and Catherine Schuman.
+					</p>
+					<p
+						class="mt-1 text-sm leading-6 text-neutral-500 dark:text-neutral-400"
+					>
+						<em
+							>International Conference on Machine Learning and Applications</em
+						> (ICMLA), 2023.
+					</p>
+				</li>
+			</ol>
+		</section>
+
+		<hr class="section-rule" />
+
+		<footer class="space-y-4 leading-7 text-neutral-700 dark:text-neutral-300">
+			<p class="text-sm text-neutral-500 dark:text-neutral-400">
+				<em>Updated 7/21/2026.</em>
+			</p>
+		</footer>
+	</article>
+</BaseLayout>

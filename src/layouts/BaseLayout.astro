@@ -1,0 +1,57 @@
+---
+import 'katex/dist/katex.min.css';
+import '../styles/global.css';
+import SiteNav from '../components/SiteNav.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+	feedHref?: string;
+}
+
+const { title = 'dominicmkennedy.com', description, feedHref } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<script is:inline>
+			(() => {
+				const savedTheme = localStorage.getItem('theme');
+				const useDarkTheme = savedTheme
+					? savedTheme === 'dark'
+					: window.matchMedia('(prefers-color-scheme: dark)').matches;
+				document.documentElement.classList.toggle('dark', useDarkTheme);
+				document.documentElement.style.colorScheme = useDarkTheme
+					? 'dark'
+					: 'light';
+			})();
+		</script>
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		{description && <meta name="description" content={description} />}
+		{
+			feedHref && (
+				<link
+					rel="alternate"
+					type="application/rss+xml"
+					title={`${title} RSS feed`}
+					href={new URL(feedHref, Astro.site)}
+				/>
+			)
+		}
+	</head>
+	<body>
+		<SiteNav />
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>

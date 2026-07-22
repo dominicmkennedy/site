@@ -1,0 +1,58 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const links = [
+	{ href: '/', label: 'Home' },
+	{ href: '/blog', label: 'Blog' },
+	{ href: '/music', label: 'Music' },
+	{ href: '/directory', label: 'Directory' },
+];
+
+const pathname = Astro.url.pathname;
+
+function isCurrentPage(href: string) {
+	return href === '/'
+		? pathname === '/'
+		: pathname === href || pathname.startsWith(`${href}/`);
+}
+---
+
+<header class="font-body border-b border-neutral-200 dark:border-white/10">
+	<nav class="content-container py-5" aria-label="Primary navigation">
+		<div
+			class="grid grid-cols-[1fr_auto] items-center gap-3 sm:grid-cols-[2.5rem_1fr_2.5rem]"
+		>
+			<span class="hidden sm:block" aria-hidden="true"></span>
+			<ul class="flex flex-wrap items-center justify-center">
+				{
+					links.map(({ href, label }, index) => {
+						const isCurrent = isCurrentPage(href);
+
+						return (
+							<li
+								class:list={[
+									index > 0 &&
+										'ml-2 border-l border-neutral-300 pl-2 dark:border-neutral-700 sm:ml-4 sm:pl-4',
+								]}
+							>
+								<a
+									class:list={[
+										'text-base font-medium transition-colors',
+										isCurrent
+											? 'primary-gradient-text underline decoration-2 underline-offset-4'
+											: 'text-neutral-600 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white',
+									]}
+									href={href}
+									aria-current={isCurrent ? 'page' : undefined}
+								>
+									{label}
+								</a>
+							</li>
+						);
+					})
+				}
+			</ul>
+			<ThemeToggle />
+		</div>
+	</nav>
+</header>

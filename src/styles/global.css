@@ -1,0 +1,333 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+	font-family: 'Quicksand';
+	src: url('/fonts/quicksand/Quicksand-Variable.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url('/fonts/fira-sans/FiraSans-Regular.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url('/fonts/fira-sans/FiraSans-Italic.woff2') format('woff2');
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url('/fonts/fira-sans/FiraSans-Medium.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url('/fonts/fira-sans/FiraSans-MediumItalic.woff2') format('woff2');
+	font-style: italic;
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url('/fonts/fira-sans/FiraSans-SemiBold.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url('/fonts/fira-sans/FiraSans-SemiBoldItalic.woff2') format('woff2');
+	font-style: italic;
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url('/fonts/fira-sans/FiraSans-Bold.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Fira Sans';
+	src: url('/fonts/fira-sans/FiraSans-BoldItalic.woff2') format('woff2');
+	font-style: italic;
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Fira Code';
+	src: url('/fonts/fira-code/FiraCode-Latin-Variable.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	unicode-range:
+		U+0000-00ff, U+0131, U+0152-0153, U+02bb-02bc, U+02c6, U+02da, U+02dc,
+		U+0304, U+0308, U+0329, U+2000-206f, U+20ac, U+2122, U+2191, U+2193, U+2212,
+		U+2215, U+feff, U+fffd;
+}
+
+@font-face {
+	font-family: 'Fira Code';
+	src: url('/fonts/fira-code/FiraCode-Symbols-Variable.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	unicode-range: U+2000-2001, U+2004-2008, U+200a, U+23b8-23bd, U+2500-259f;
+}
+
+@layer base {
+	:root {
+		color-scheme: light;
+		--font-body:
+			'Fira Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+			'Segoe UI', sans-serif;
+		--font-heading: 'Quicksand', var(--font-body);
+		--font-mono:
+			'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+			'Liberation Mono', monospace;
+		--heading-gradient-angle: 135deg;
+		--heading-primary-start: #d00070;
+		--heading-primary-end: #c7437b;
+		--heading-secondary-start: #008f7f;
+		--heading-secondary-end: #329b90;
+
+		font-family: var(--font-body);
+		font-synthesis: none;
+		text-rendering: optimizeLegibility;
+	}
+
+	:root.dark {
+		--heading-primary-start: #ff1493;
+		--heading-primary-end: #d96ca7;
+		--heading-secondary-start: #00bfa6;
+		--heading-secondary-end: #63bfb5;
+	}
+
+	html {
+		min-height: 100%;
+		background: #fafafa;
+	}
+
+	body {
+		min-height: 100vh;
+		min-height: 100dvh;
+		margin: 0;
+		display: grid;
+		grid-template-rows: auto minmax(0, 1fr);
+		background-color: #fafafa;
+		background-image:
+			linear-gradient(135deg, rgb(37 99 235 / 18%), transparent 72%),
+			linear-gradient(315deg, rgb(236 72 153 / 16%), transparent 76%);
+		background-attachment: fixed;
+		color: #171717;
+	}
+
+	main {
+		min-width: 0;
+		min-height: 0;
+	}
+
+	a {
+		color: inherit;
+	}
+
+	html.dark,
+	html.dark body {
+		background-color: #141419;
+		color: #f5f5f5;
+	}
+
+	html.dark body {
+		background-image:
+			linear-gradient(135deg, rgb(37 99 235 / 14%), transparent 42%),
+			linear-gradient(315deg, rgb(236 72 153 / 10%), transparent 46%);
+		background-attachment: fixed;
+	}
+}
+
+@utility content-container {
+	width: min(100% - 2rem, 48rem);
+	margin-inline: auto;
+}
+
+@utility tool-container {
+	width: min(100% - 2rem, 64rem);
+	margin-inline: auto;
+}
+
+@utility font-body {
+	font-family: var(--font-body);
+}
+
+@utility primary-gradient-text {
+	display: inline-block;
+	color: var(--heading-primary-start);
+	background-image: linear-gradient(
+		var(--heading-gradient-angle),
+		var(--heading-primary-start),
+		var(--heading-primary-end)
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+@utility text-link {
+	text-decoration-line: underline;
+	text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+	text-underline-offset: 0.2em;
+	transition: text-decoration-color 150ms ease;
+
+	&:hover {
+		text-decoration-color: currentColor;
+	}
+}
+
+@utility section-rule {
+	margin-block: 2rem;
+	border: 0;
+	border-top: 1px solid rgb(0 0 0 / 12%);
+}
+
+@utility section-heading {
+	font-size: 1.75rem;
+	line-height: 1.2;
+	font-weight: 600;
+	font-family: var(--font-heading);
+	width: fit-content;
+	color: var(--heading-secondary-start);
+	background-image: linear-gradient(
+		var(--heading-gradient-angle),
+		var(--heading-secondary-start),
+		var(--heading-secondary-end)
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+@utility page-heading {
+	font-family: var(--font-heading);
+	font-weight: 600;
+	padding-bottom: 0.07em;
+	width: fit-content;
+	color: var(--heading-primary-start);
+	background-image: linear-gradient(
+		var(--heading-gradient-angle),
+		var(--heading-primary-start),
+		var(--heading-primary-end)
+	);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+@utility section-copy {
+	margin-top: 1.5rem;
+	display: grid;
+	gap: 1rem;
+	line-height: 1.75;
+	color: #404040;
+}
+
+@utility post-prose {
+	font-family: var(--font-body);
+
+	& :where(a) {
+		color: inherit;
+		font-weight: inherit;
+		text-decoration-line: underline;
+		text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+		text-underline-offset: 0.2em;
+		transition: text-decoration-color 150ms ease;
+	}
+
+	& :where(a):hover {
+		text-decoration-color: currentColor;
+	}
+
+	& :where(h1, h2, h3, h4, h5, h6) {
+		font-family: var(--font-heading);
+	}
+
+	& :where(h1, h2) {
+		width: fit-content;
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	& :where(h1) {
+		color: var(--heading-primary-start);
+		background-image: linear-gradient(
+			var(--heading-gradient-angle),
+			var(--heading-primary-start),
+			var(--heading-primary-end)
+		);
+	}
+
+	& :where(h2) {
+		color: var(--heading-secondary-start);
+		background-image: linear-gradient(
+			var(--heading-gradient-angle),
+			var(--heading-secondary-start),
+			var(--heading-secondary-end)
+		);
+	}
+
+	& :where(code, pre) {
+		font-family: var(--font-mono);
+		font-variant-ligatures: contextual;
+	}
+
+	& code:not(pre code) {
+		color: inherit;
+		font-weight: inherit;
+		padding: 0.1em 0.3em;
+		background-color: color-mix(in srgb, currentColor 10%, transparent);
+		border-radius: 0.2rem;
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+	}
+
+	& code:not(pre code)::before,
+	& code:not(pre code)::after {
+		content: none;
+	}
+
+	& :where(pre) {
+		background-color: rgb(23 23 23 / 50%) !important;
+	}
+}
+
+.dark .section-rule {
+	border-top-color: rgb(255 255 255 / 12%);
+}
+
+.dark .section-copy {
+	color: #d4d4d4;
+}
+
+.dark .post-prose :where(pre) {
+	background-color: rgb(0 0 0 / 22%) !important;
+}

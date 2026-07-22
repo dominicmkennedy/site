@@ -1,0 +1,19 @@
+---
+import { Rss } from '@lucide/svelte';
+
+interface Props {
+	href: string;
+	label: string;
+}
+
+const { href, label } = Astro.props;
+---
+
+<a
+	class="grid size-10 place-items-center rounded-sm text-[var(--heading-secondary-start)] transition-colors hover:bg-black/5 hover:text-[var(--heading-secondary-end)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:hover:bg-white/10"
+	href={href}
+	aria-label={`${label} RSS feed`}
+	title={`${label} RSS feed`}
+>
+	<Rss aria-hidden="true" size={24} strokeWidth={2} />
+</a>
