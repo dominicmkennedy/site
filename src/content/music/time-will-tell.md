@@ -4,7 +4,7 @@ artist: Devon Gilfillian
 mbAlbumUrl: https://musicbrainz.org/release/67098c37-f75e-4384-983c-4ce8ac5bf0bb
 artistUrl: https://en.wikipedia.org/wiki/Devon_Gilfillian
 releaseDate: 2026-06-26
-reviewed: 2026-07-21
+reviewed: 2026-07-22
 streaming:
   spotify: https://open.spotify.com/album/3T8rwcHSkeOaV6zb7ylvDL
   bandcamp: https://devongilfillian.bandcamp.com/album/time-will-tell
