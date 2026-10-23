@@ -7,14 +7,17 @@ export async function GET(context: { site: URL | undefined }) {
 	);
 
 	return rss({
-		title: 'Blog',
+		title: 'Dominic Kennedy',
 		description: 'Blog posts from dominicmkennedy.com.',
 		site: context.site!,
-		items: posts.map((post) => ({
-			title: post.data.title,
-			description: post.data.description,
-			pubDate: post.data.published,
-			link: `/blog/${post.id}/`,
-		})),
+		items: posts.map((post) => {
+			const permalink = new URL(`/blog/${post.id}/`, context.site!);
+			return {
+				title: post.data.title,
+				description: `<p>${post.data.description}</p><p><a href="${permalink.href}">Read the post</a></p>`,
+				pubDate: post.data.published,
+				link: permalink.href,
+			};
+		}),
 	});
 }

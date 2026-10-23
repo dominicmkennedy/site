@@ -8,8 +8,8 @@ export async function GET(context: { site: URL | undefined }) {
 	);
 
 	return rss({
-		title: 'Music recommendations from Dominic Kennedy',
-		description: 'Brief album recommendations from dominicmkennedy.com.',
+		title: "Dominic's music recs",
+		description: 'Album recommendations from dominicmkennedy.com.',
 		site: context.site!,
 		items: recommendations.map((recommendation) => {
 			const recommendationHtml = recommendation.rendered?.html ?? '';

@@ -10,7 +10,7 @@ const recommendations = (await getCollection('music')).sort(
 ---
 
 <BaseLayout title="What I've Been Listening to" feedHref="/music/rss.xml">
-	<section class="content-container py-8 sm:py-10">
+	<section class="index-page content-container">
 		<div class="mb-6 flex items-center justify-between gap-4">
 			<h1 class="page-heading text-3xl">What I've Been Listening to</h1>
 			<FeedLink href="/music/rss.xml" label="Music" />
