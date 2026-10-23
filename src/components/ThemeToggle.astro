@@ -3,14 +3,14 @@ import { Moon, Sun } from '@lucide/svelte';
 ---
 
 <button
-	class="grid size-10 cursor-pointer place-items-center rounded-sm text-neutral-600 transition-colors hover:bg-black/5 hover:text-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:text-neutral-400 dark:hover:bg-white/10 dark:hover:text-white"
+	class="grid size-9 cursor-pointer place-items-center rounded-sm text-neutral-600 transition-colors hover:bg-black/5 hover:text-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:text-neutral-400 dark:hover:bg-white/10 dark:hover:text-white"
 	type="button"
-	aria-label="Switch to dark mode"
-	title="Switch to dark mode"
+	aria-label="Switch to the modern dark theme"
+	title="Switch to the modern dark theme"
 	data-theme-toggle
 >
-	<Moon class="dark:hidden" aria-hidden="true" size={22} strokeWidth={2} />
-	<Sun class="hidden dark:block" aria-hidden="true" size={22} strokeWidth={2} />
+	<Moon class="dark:hidden" aria-hidden="true" size={20} strokeWidth={2} />
+	<Sun class="hidden dark:block" aria-hidden="true" size={20} strokeWidth={2} />
 </button>
 
 <script>
@@ -21,10 +21,9 @@ import { Moon, Sun } from '@lucide/svelte';
 	function updateThemeToggleLabel() {
 		if (!button) return;
 
-		const nextTheme = document.documentElement.classList.contains('dark')
-			? 'light'
-			: 'dark';
-		const label = `Switch to ${nextTheme} mode`;
+		const label = document.documentElement.classList.contains('dark')
+			? 'Switch to the retro light theme'
+			: 'Switch to the modern dark theme';
 		button.setAttribute('aria-label', label);
 		button.setAttribute('title', label);
 	}

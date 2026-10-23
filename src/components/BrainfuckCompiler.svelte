@@ -164,13 +164,14 @@
 		<div class="mb-4 flex items-center justify-between gap-4">
 			<h2 id="program-heading" class="section-heading">Program</h2>
 			<button
-				class="grid size-10 cursor-pointer place-items-center rounded-sm text-neutral-600 transition-colors hover:bg-black/5 hover:text-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:text-neutral-400 dark:hover:bg-white/10 dark:hover:text-white"
+				class="light-text-button grid size-10 cursor-pointer place-items-center rounded-sm text-neutral-600 transition-colors hover:bg-black/5 hover:text-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:text-neutral-400 dark:hover:bg-white/10 dark:hover:text-white"
 				type="button"
 				onclick={resetProgram}
 				aria-label="Restore Mandelbrot program"
 				title="Restore Mandelbrot program"
 			>
 				<RotateCcw aria-hidden="true" size={21} strokeWidth={2} />
+				<span class="light-button-text">Restore program</span>
 			</button>
 		</div>
 
@@ -188,7 +189,7 @@
 
 		<div class="mt-4 flex flex-wrap items-center gap-3">
 			<button
-				class="inline-flex h-10 cursor-pointer items-center gap-2 rounded-sm bg-[var(--heading-secondary-start)] px-4 font-semibold text-white transition-[filter,opacity] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--heading-secondary-start)] disabled:cursor-not-allowed disabled:opacity-50 dark:text-neutral-950"
+				class="light-text-button inline-flex h-10 cursor-pointer items-center gap-2 rounded-sm bg-[var(--heading-secondary-start)] px-4 font-semibold text-white transition-[filter,opacity] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--heading-secondary-start)] disabled:cursor-not-allowed disabled:opacity-50 dark:text-neutral-950"
 				type="button"
 				onclick={runProgram}
 				disabled={!ready || running}
@@ -260,7 +261,7 @@
 	oncancel={cancelInput}
 >
 	<form
-		class="p-6"
+		class="program-input-form p-6"
 		onsubmit={(event) => {
 			event.preventDefault();
 			submitInput();
@@ -276,14 +277,14 @@
 			spellcheck="false"
 			autocapitalize="none"
 			autocomplete="off"></textarea>
-		<div class="mt-5 flex justify-end gap-3">
+		<div class="program-input-actions mt-5 flex justify-end gap-3">
 			<button
 				class="h-10 cursor-pointer rounded-sm px-4 font-medium text-neutral-600 transition-colors hover:bg-black/5 hover:text-neutral-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:text-neutral-400 dark:hover:bg-white/10 dark:hover:text-white"
 				type="button"
 				onclick={cancelInput}>Cancel</button
 			>
 			<button
-				class="inline-flex h-10 cursor-pointer items-center gap-2 rounded-sm bg-[var(--heading-secondary-start)] px-4 font-semibold text-white transition-[filter] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--heading-secondary-start)] dark:text-neutral-950"
+				class="light-text-button inline-flex h-10 cursor-pointer items-center gap-2 rounded-sm bg-[var(--heading-secondary-start)] px-4 font-semibold text-white transition-[filter] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--heading-secondary-start)] dark:text-neutral-950"
 				type="submit"
 			>
 				<Play aria-hidden="true" size={18} strokeWidth={2} />

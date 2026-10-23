@@ -52,9 +52,9 @@ const photos = [
 	title="Dominic Kennedy"
 	description="Dominic Kennedy is a Computer Science Ph.D. student at the University of Utah."
 >
-	<article class="content-container py-12 sm:py-16">
+	<article class="content-page content-container">
 		<header>
-			<h1 class="page-heading text-4xl sm:text-5xl">Howdy!</h1>
+			<h1 class="home-heading page-heading text-4xl sm:text-5xl">Howdy!</h1>
 			<div
 				class="mt-6 text-lg leading-8 text-neutral-700 after:block after:clear-both after:content-[''] dark:text-neutral-300"
 			>
@@ -108,28 +108,6 @@ const photos = [
 					<a class="text-link" href="/dominic-kennedy-cv.pdf">CV</a>.
 				</p>
 			</div>
-		</section>
-
-		<hr class="section-rule" />
-
-		<section aria-labelledby="projects-heading">
-			<h2 id="projects-heading" class="section-heading">Projects</h2>
-			<ul
-				class="mt-4 space-y-2 leading-7 text-neutral-700 dark:text-neutral-300"
-			>
-				<li>
-					<a class="text-link" href="/brainfuck"
-						>Optimizing Brainfuck compiler</a
-					>
-					— hosted on WASM and targeting WASM.
-				</li>
-				<li>
-					<a class="text-link" href="/cellular-automata"
-						>2D cellular automata renderer</a
-					>
-					— renders quickly by using WASM to draw on a WebGL canvas.
-				</li>
-			</ul>
 		</section>
 
 		<hr class="section-rule" />
@@ -229,9 +207,31 @@ const photos = [
 
 		<hr class="section-rule" />
 
+		<section aria-labelledby="projects-heading">
+			<h2 id="projects-heading" class="section-heading">Projects</h2>
+			<ul
+				class="mt-4 space-y-2 leading-7 text-neutral-700 dark:text-neutral-300"
+			>
+				<li>
+					<a class="text-link" href="/brainfuck"
+						>Optimizing Brainfuck compiler</a
+					>
+					— hosted on WASM and targeting WASM.
+				</li>
+				<li>
+					<a class="text-link" href="/cellular-automata"
+						>2D cellular automata renderer</a
+					>
+					— renders quickly by using WASM to draw on a WebGL canvas.
+				</li>
+			</ul>
+		</section>
+
+		<hr class="section-rule" />
+
 		<footer class="space-y-4 leading-7 text-neutral-700 dark:text-neutral-300">
 			<p class="text-sm text-neutral-500 dark:text-neutral-400">
-				<em>Updated 7/21/2026.</em>
+				<em>Updated 7/28/2026.</em>
 			</p>
 		</footer>
 	</article>

@@ -42,10 +42,10 @@ function dateValue(date: Date) {
 
 <article
 	id={recommendation.id}
-	class="relative scroll-mt-6 overflow-hidden rounded-sm border border-neutral-300/80 bg-white/25 p-5 pt-6 shadow-[0_8px_30px_rgb(0_0_0/0.06)] sm:p-6 sm:pt-7 dark:border-white/15 dark:bg-black/10 dark:shadow-[0_8px_30px_rgb(0_0_0/0.18)]"
+	class="music-recommendation relative scroll-mt-6 overflow-hidden rounded-sm border border-neutral-300/80 bg-white/25 p-5 pt-6 shadow-[0_8px_30px_rgb(0_0_0/0.06)] sm:p-6 sm:pt-7 dark:border-white/15 dark:bg-black/10 dark:shadow-[0_8px_30px_rgb(0_0_0/0.18)]"
 >
 	<div
-		class="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--heading-secondary-start),var(--heading-secondary-end))]"
+		class="music-recommendation-accent absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--heading-secondary-start),var(--heading-secondary-end))]"
 		aria-hidden="true"
 	>
 	</div>
@@ -103,7 +103,7 @@ function dateValue(date: Date) {
 	{
 		streamingLinks.length > 0 && (
 			<ul
-				class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-neutral-200 pt-4 dark:border-white/10"
+				class="streaming-links mt-5 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-neutral-200 pt-4 dark:border-white/10"
 				aria-label="Streaming links"
 			>
 				{streamingLinks.map(({ label, href, icon }) => (

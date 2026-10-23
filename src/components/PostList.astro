@@ -11,7 +11,7 @@ interface Props {
 const { posts } = Astro.props;
 ---
 
-<ul class="divide-y divide-neutral-200 dark:divide-white/10">
+<ul class="post-list divide-y divide-neutral-200 dark:divide-white/10">
 	{
 		posts.map((post) => (
 			<li class="py-6 first:pt-0">

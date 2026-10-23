@@ -167,7 +167,7 @@
 </script>
 
 <div
-	class="mt-6 grid items-start gap-6 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_19rem]"
+	class="ca-renderer mt-5 grid items-start gap-5 lg:min-h-0 lg:flex-1 lg:grid-cols-[minmax(0,1fr)_19rem]"
 >
 	<section
 		class="min-w-0 lg:h-full"
@@ -189,7 +189,7 @@
 	</section>
 
 	<form
-		class="space-y-5 lg:border-l lg:border-neutral-200 lg:pl-6 dark:lg:border-white/10"
+		class="space-y-4 lg:border-l lg:border-neutral-200 lg:pl-5 dark:lg:border-white/10"
 		onsubmit={(event) => {
 			event.preventDefault();
 			generate(false);
@@ -200,7 +200,7 @@
 				Cell types
 				<input
 					id="cell-types"
-					class="h-10 rounded-sm border border-neutral-300 bg-white/55 px-3 font-[var(--font-mono)] font-normal outline-none focus:border-[var(--heading-secondary-start)] focus:ring-2 focus:ring-[var(--heading-secondary-start)]/20 dark:border-white/15 dark:bg-black/20"
+					class="h-9 rounded-sm border border-neutral-300 bg-white/55 px-3 font-[var(--font-mono)] font-normal outline-none focus:border-[var(--heading-secondary-start)] focus:ring-2 focus:ring-[var(--heading-secondary-start)]/20 dark:border-white/15 dark:bg-black/20"
 					type="number"
 					min="2"
 					max="16"
@@ -212,7 +212,7 @@
 				Grid width
 				<input
 					id="universe-width"
-					class="h-10 rounded-sm border border-neutral-300 bg-white/55 px-3 font-[var(--font-mono)] font-normal outline-none focus:border-[var(--heading-secondary-start)] focus:ring-2 focus:ring-[var(--heading-secondary-start)]/20 dark:border-white/15 dark:bg-black/20"
+					class="h-9 rounded-sm border border-neutral-300 bg-white/55 px-3 font-[var(--font-mono)] font-normal outline-none focus:border-[var(--heading-secondary-start)] focus:ring-2 focus:ring-[var(--heading-secondary-start)]/20 dark:border-white/15 dark:bg-black/20"
 					type="number"
 					min="4"
 					max="512"
@@ -244,7 +244,7 @@
 			Seed
 			<input
 				id="seed"
-				class="h-10 w-full rounded-sm border border-neutral-300 bg-white/55 px-3 font-[var(--font-mono)] text-xs outline-none placeholder:text-neutral-400 focus:border-[var(--heading-secondary-start)] focus:ring-2 focus:ring-[var(--heading-secondary-start)]/20 dark:border-white/15 dark:bg-black/20 dark:placeholder:text-neutral-600"
+				class="h-9 w-full rounded-sm border border-neutral-300 bg-white/55 px-3 font-[var(--font-mono)] text-xs outline-none placeholder:text-neutral-400 focus:border-[var(--heading-secondary-start)] focus:ring-2 focus:ring-[var(--heading-secondary-start)]/20 dark:border-white/15 dark:bg-black/20 dark:placeholder:text-neutral-600"
 				type="text"
 				placeholder="Random"
 				bind:value={seed}
@@ -274,7 +274,7 @@
 
 		<div class="flex flex-wrap gap-3 pt-1">
 			<button
-				class="inline-flex h-10 cursor-pointer items-center gap-2 rounded-sm bg-[var(--heading-secondary-start)] px-4 font-semibold text-white transition-[filter,opacity] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--heading-secondary-start)] disabled:cursor-not-allowed disabled:opacity-50 dark:text-neutral-950"
+				class="light-text-button inline-flex h-9 cursor-pointer items-center gap-2 rounded-sm bg-[var(--heading-secondary-start)] px-4 font-semibold text-white transition-[filter,opacity] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--heading-secondary-start)] disabled:cursor-not-allowed disabled:opacity-50 dark:text-neutral-950"
 				type="submit"
 				disabled={!ready || running}
 			>
@@ -283,7 +283,7 @@
 			</button>
 			{#if generated}
 				<button
-					class="grid size-10 cursor-pointer place-items-center rounded-sm border border-neutral-300 text-neutral-600 transition-colors hover:border-[var(--heading-secondary-start)] hover:text-[var(--heading-secondary-start)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:border-white/15 dark:text-neutral-400"
+					class="light-text-button grid size-9 cursor-pointer place-items-center rounded-sm border border-neutral-300 text-neutral-600 transition-colors hover:border-[var(--heading-secondary-start)] hover:text-[var(--heading-secondary-start)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:border-white/15 dark:text-neutral-400"
 					type="button"
 					onclick={toggleAnimation}
 					aria-label={animate ? 'Pause animation' : 'Resume animation'}
@@ -294,6 +294,9 @@
 					{:else}
 						<Play aria-hidden="true" size={18} strokeWidth={2} />
 					{/if}
+					<span class="light-button-text">
+						{animate ? 'Pause animation' : 'Resume animation'}
+					</span>
 				</button>
 			{/if}
 		</div>

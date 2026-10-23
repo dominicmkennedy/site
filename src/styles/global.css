@@ -98,6 +98,7 @@
 @layer base {
 	:root {
 		color-scheme: light;
+		font-size: 17px;
 		--font-body:
 			'Fira Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
 			'Segoe UI', sans-serif;
@@ -110,6 +111,7 @@
 		--heading-primary-end: #c7437b;
 		--heading-secondary-start: #008f7f;
 		--heading-secondary-end: #329b90;
+		--code-block-background: #d0d0d0;
 
 		font-family: var(--font-body);
 		font-synthesis: none;
@@ -121,6 +123,7 @@
 		--heading-primary-end: #d96ca7;
 		--heading-secondary-start: #00bfa6;
 		--heading-secondary-end: #63bfb5;
+		--code-block-background: rgb(0 0 0 / 22%);
 	}
 
 	html {
@@ -316,7 +319,19 @@
 	}
 
 	& :where(pre) {
-		background-color: rgb(23 23 23 / 50%) !important;
+		background-color: var(--code-block-background) !important;
+	}
+
+	/* Tables and display math can't shrink below their content width, so on
+	 * narrow screens they scroll sideways instead of widening the page. */
+	& :where(.table-wrap) {
+		overflow-x: auto;
+	}
+
+	& :where(.katex-display) {
+		overflow-x: auto;
+		overflow-y: hidden;
+		padding-block: 0.25em;
 	}
 }
 
@@ -328,6 +343,236 @@
 	color: #d4d4d4;
 }
 
-.dark .post-prose :where(pre) {
-	background-color: rgb(0 0 0 / 22%) !important;
+.index-page {
+	padding-block: 2rem;
+}
+
+.content-page {
+	padding-block: 1.5rem;
+}
+
+.post-header {
+	margin-bottom: 1.25rem;
+	padding-bottom: 1.25rem;
+}
+
+@media (min-width: 40rem) {
+	.index-page {
+		padding-block: 2.5rem;
+	}
+}
+
+/*
+ * Light mode intentionally recalls a simple, late-1990s academic homepage.
+ * Keep these rules scoped to the absence of `.dark`: dark mode retains the
+ * gradients, colors, and component treatments above. Typography and layout
+ * are shared with dark mode; these rules only change colors, borders, and
+ * form controls.
+ */
+html:not(.dark) {
+	color-scheme: light;
+	background: #fff;
+}
+
+@media (max-width: 39.999rem) {
+	html {
+		font-size: 15px;
+	}
+}
+
+html:not(.dark) body {
+	display: grid;
+	background: #fff;
+	color: #000;
+	font-family: var(--font-body);
+}
+
+/* Links */
+
+html:not(.dark) a,
+html:not(.dark) .text-link,
+html:not(.dark) .primary-gradient-text {
+	color: #0000ee;
+	background: none;
+	-webkit-text-fill-color: currentColor;
+	text-decoration: underline;
+	text-decoration-color: currentColor;
+	text-underline-offset: auto;
+	transition: none;
+}
+
+html:not(.dark) a:visited {
+	color: #551a8b;
+}
+
+html:not(.dark) a:active {
+	color: #f00;
+}
+
+/* Navigation */
+
+html:not(.dark) body > header {
+	border-bottom: 1px solid #808080;
+}
+
+html:not(.dark) body > header li {
+	border-color: #808080;
+}
+
+html:not(.dark) body > header a {
+	font-weight: 400;
+	transition: none;
+}
+
+html:not(.dark) body > header a[aria-current='page'] {
+	font-weight: bold;
+}
+
+html:not(.dark) body > header [data-theme-toggle] {
+	color: #000;
+}
+
+/* Typography */
+
+html:not(.dark) main :where(p, li, dt, dd, time, figcaption) {
+	color: #000;
+}
+
+html:not(.dark) main ::marker {
+	color: currentColor;
+}
+
+/* Headings and section structure */
+
+html:not(.dark) :where(.page-heading, .section-heading),
+html:not(.dark) .post-prose :where(h1, h2, h3, h4, h5, h6) {
+	width: auto;
+	color: #000;
+	background: none;
+	font-family: var(--font-heading);
+	-webkit-text-fill-color: currentColor;
+}
+
+html:not(.dark) h1.page-heading,
+html:not(.dark) h2.section-heading,
+html:not(.dark) .post-prose h1,
+html:not(.dark) .post-prose h2 {
+	font-weight: bold;
+}
+
+html:not(.dark) main a .section-heading {
+	color: inherit;
+	-webkit-text-fill-color: currentColor;
+}
+
+html:not(.dark) .section-copy {
+	color: #000;
+}
+
+html:not(.dark) :where(.section-rule, .post-prose hr) {
+	border-top-color: #808080;
+}
+
+/* Article content and code */
+
+html:not(.dark) .post-prose {
+	color: #000;
+	font-family: var(--font-body);
+}
+
+html:not(.dark) .post-prose code:not(pre code) {
+	padding: 0;
+	background: transparent;
+	border-radius: 0;
+}
+
+html:not(.dark) .post-prose :where(pre) {
+	padding: 0.75rem 1rem;
+	border: 0;
+	border-radius: 0;
+	color: #000 !important;
+	line-height: normal;
+}
+
+html:not(.dark) .post-prose :where(pre *) {
+	color: #000 !important;
+}
+
+/* Panels and forms */
+
+html:not(.dark) main :where(figure, article, textarea, input, select, dialog) {
+	border-radius: 0;
+	box-shadow: none;
+}
+
+html:not(.dark) main .music-recommendation {
+	overflow: visible;
+	padding: 1rem;
+	border: 1px solid #808080;
+	background: transparent;
+}
+
+html:not(.dark) main .music-recommendation-accent {
+	display: none;
+}
+
+html:not(.dark) main .post-header {
+	border-bottom: 1px solid #808080;
+}
+
+html:not(.dark) main :where(textarea, input:not([type='range']), select) {
+	border: 2px inset buttonborder;
+	background: #fff;
+	color: #000;
+}
+
+html:not(.dark) main #brainfuck-input {
+	height: 2.5rem;
+	margin-top: 0;
+	padding: 0.125rem 0.25rem;
+}
+
+html:not(.dark) main .program-input-form {
+	padding: 0.75rem;
+}
+
+html:not(.dark) main .program-input-form > .section-heading {
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+}
+
+html:not(.dark) main .program-input-actions {
+	margin-top: 0.5rem;
+}
+
+html:not(.dark) main input[type='range'] {
+	all: revert;
+}
+
+/* Native text fields on the cellular automata page, matching its sliders
+ * and buttons. Width is kept so they fill the controls grid. */
+html:not(.dark) .ca-page input:not([type='range']) {
+	all: revert;
+	box-sizing: border-box;
+	width: 100%;
+	min-width: 0;
+}
+
+html:not(.dark) main :where(.tool-container, .ca-page) button {
+	all: revert;
+	cursor: default;
+}
+
+html:not(.dark) button.light-text-button svg {
+	display: none;
+}
+
+/* Theme and page-specific adjustments */
+
+.home-heading {
+	font-size: 2.25rem;
+}
+
+.dark .light-button-text {
+	display: none;
 }
