@@ -9,8 +9,8 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"check": "astro check",
-		"format": "prettier --write \"src/**/*.{astro,svelte,ts,css}\" astro.config.mjs",
-		"format:check": "prettier --check \"src/**/*.{astro,svelte,ts,css}\" astro.config.mjs",
+		"format": "prettier --write \"src/**/*.{astro,svelte,ts,css}\" astro.config.ts",
+		"format:check": "prettier --check \"src/**/*.{astro,svelte,ts,css}\" astro.config.ts",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
@@ -33,6 +33,7 @@
 		"@astrojs/check": "^0.9.9",
 		"@tailwindcss/typography": "^0.5.20",
 		"@tailwindcss/vite": "^4.3.2",
+		"@types/hast": "^3.0.5",
 		"@types/seedrandom": "^3.0.8",
 		"prettier": "^3.9.5",
 		"prettier-plugin-astro": "^0.14.1",
